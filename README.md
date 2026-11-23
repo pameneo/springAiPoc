@@ -1,0 +1,2 @@
+# springAiPoc
+Spring AI POC
