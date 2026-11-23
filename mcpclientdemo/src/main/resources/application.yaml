@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: mcpclientdemo
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+    vectorstore:
+      qdrant:
+        initialize-schema: true
+        host: localhost
+        port: 6334
+        collection-name: pamscafe
+    mcp:
+      client:
+        streamable-http:
+          connections:
+            pamscafe:
+              url: http://localhost:8091
+              endpoint: /mcp
+  docker:
+    compose:
+      stop:
+        command: down
+      start:
+        command: up
+      lifecycle-management: start_and_stop
+  datasource:
+    url: jdbc:h2:file:~/chatmemory;AUTO_SERVER=true
+    driver-class-name: org.h2.Driver
+    username: ${H2_DB_USERNAME}
+    password: ${H2_DB_PWD}
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+
+logging:
+  llm: true
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+

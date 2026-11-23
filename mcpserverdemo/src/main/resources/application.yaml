@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mcpserverdemo
+  datasource:
+    url: jdbc:h2:file:~/chatmemory;AUTO_SERVER=true
+    driver-class-name: org.h2.Driver
+    username: ${H2_DB_USERNAME}
+    password: ${H2_DB_PWD}
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+  ai:
+    mcp:
+      server:
+        protocol: streamable
+
+server:
+  port: 8091
+
